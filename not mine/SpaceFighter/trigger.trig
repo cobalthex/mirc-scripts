@@ -1,0 +1,2 @@
+?replymessage 1 This text will be sent to any user that types ?replymessage
+?command 2 echo hello

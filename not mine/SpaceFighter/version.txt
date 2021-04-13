@@ -1,0 +1,59 @@
+================================================
+Version 1.00 - First Public Release, Public BETA
+================================================
+Version 1.10 - July 2nd 2002
+-
+Fixes Include:
+- SpaceFighter will now run under any path.
+- Much better compatiblitly.
+- Master server support increased.
+- 2 Different window modes now supported.
+- Minor fixes for the mapmaker.
+- Ship position fix.
+- Server notices now popup, and master server now checks versions.
+- Other various bug fixes.
+- /spacefighter -smsg is now properly supported [ Send msgs from the server to all active users]
+- /spacefighter -v returns version
+- /spacefighter -b returns build
+================================================
+Version 1.20 - July 7th 2002
+-
+Fixes Include:
+- Replaced the dialog server list viewer with a Pic Win Version, looks %110 nicer :D
+- Added version & current user status as token identifiers to the server infomation.
+- 2nd Window mode is now set as default. That is the default SpaceFighter window is now set.
+as not-ontop, is minimizable and is not resizable.
+- Minor changes to display.
+================================================
+Version 1.30 - July 14th 2002
+-
+Fixes Include:
+- Replaced the speed test dialog with a Pic Win Version, looks very nice.
+- Added Triggers, now servers can create custom triggers in the format ?trigger in which can either 
+reply messages to the triggering user or execute a command locally,
+- /spacefighter -cs now opens the server dialog
+- The @SpaceFighter window now flashes when someone has joined the game!
+- The game should now run under any path.
+- People with faster computers than the rest of us now have better support, the game now saves speed test
+results and resorts to them as default settings every time you play.
+- ?users will now return the total number of users that have joined the current server you are playing on
+- Minor Changes To The Code
+================================================
+Version 1.40 - July 20th 2002
+-
+Fixes Include:
+- Fixed the titlebar bug that would stop new users from succesfully installing. The bug accidently occured when making changes to the
+Speed Test in Version 1.30
+- Fixed the Server Description Bug where old descriptions were combined with new ones.
+- An ingame message now displays during games when there is no UDP data coming from the server.
+- Fixed bandwidth dialog problem, alias accidently removed whilst creating trigger one.
+- Fixed 2 silly if-then-else statement bugs in the update section
+- Fixed the server compile bug where a user left and then another one joined only to have some of the old users
+udp data still cached.
+- The game now checks to see that your computer is running a screen resolution of 1024 * 768 or higher on load. 
+- Fixed energy bar bug where the energy speed would be the same speed for all users. Now the
+energy bar will be included in the speed test settings.
+- Game performance increased by at least 50% for players who are having speed problems.
+The processing timer now starts before the drawing timer which means mIRC gives priority
+to processing rather than to drawing so now you dont have seconds of lag, where nothing locally-processed moves.
+- /spacefighter -mm now opens the MapMaker
