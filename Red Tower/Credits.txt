@@ -1,0 +1,17 @@
+Credits for Red Tower
+
+---
+
+Lead Development and Coding
+-Foshizzle
+
+Assistant Development and Coding
+- Chimpanzee
+- Sophie
+- TennisMan
+- Srankie
+
+Images and Graphics
+- Foshizzle: many of the object sprites(ripped and created) and recoloring other sprites and the main logo
+- Spriters-Resource.com: Many of the sprites for the game
+- ndash.eu: Game ROM site which hosted Zelda, FF, and other games that sprites were ripped from

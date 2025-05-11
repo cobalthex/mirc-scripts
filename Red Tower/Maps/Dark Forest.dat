@@ -1,0 +1,7 @@
+﻿Dark Forest
+outside+forest
+Grass
+~ Rondo: We must escape out of Dein'Jera and seek refuge into Gangtria! Follow me!+Rondo: Before we continue, I must tell you that if I do not make it out alive, make sure they do not capture me or you. Here's a dagger that will hopefully suffice for now.
+box 300 300 0
+tree 200 200 0
+powerup 200 200 0

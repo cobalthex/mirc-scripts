@@ -1,0 +1,8 @@
+name: Gangtria
+type: outside+town
+background: stone
+Dialog: Rondo: We made it to Gangtria! We should be safe for now. But in the meantime, we must find shelter in a local inn. I brought money along with me from home, but it's only enough to last us a few days, so we must find work.
+box 300 300 0
+powerup 200 200 0
+building 100 100 0
+building 10 300 2
