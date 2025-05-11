@@ -111,8 +111,8 @@ alias -l spf.menu {
   set %Spf.sd.menu1 left
   set %Spf.sd.menu2 right
   set %Spf.bmp.menu2 1 98 34 40
-  set %Spf.ship.menu1 SpaceFighter\Bitmaps\ship1.bmp
-  set %Spf.ship.menu2 SpaceFighter\Bitmaps\ship1.bmp
+  set %Spf.ship.menu1 $qt($scriptdir $+ Bitmaps\ship1.bmp)
+  set %Spf.ship.menu2 $qt($scriptdir $+ Bitmaps\ship1.bmp)
   %spf.m0 = 0
   %spf.m1 = $rgb(255,255,255)
   %spf.m2 = $rgb(255,255,255)
@@ -139,8 +139,8 @@ alias -l spf.menu {
   if (!%Spf.sd.menu1) set %Spf.sd.menu1 left
   if (!%Spf.sd.menu2) set %Spf.sd.menu2 right
   if (!%Spf.bmp.menu2) set %Spf.bmp.menu2 1 98 34 40
-  if (!%Spf.ship.menu1) set %Spf.ship.menu1 SpaceFighter\Bitmaps\ship1.bmp
-  if (!%Spf.ship.menu2) set %Spf.ship.menu2 SpaceFighter\Bitmaps\ship1.bmp
+  if (!%Spf.ship.menu1) set %Spf.ship.menu1 $qt($scriptdir $+ Bitmaps\ship1.bmp)
+  if (!%Spf.ship.menu2) set %Spf.ship.menu2 $qt($scriptdir $+ Bitmaps\ship1.bmp)
   drawrect -nrf @Spacefighter 0 1 105 327 40 40
   drawrect -nrf @Spacefighter 0 1 520 327 40 40
   drawpic -nct @Spacefighter 4227327 105 327 %Spf.bmp.menu1 %spf.ship.menu1
@@ -152,7 +152,7 @@ alias spf.gradient {
   :loop 
   if (%x >= 680) { goto end }  
   if (%y >= 610) { .halt }
-  drawpic @Spacefighter %x %y $scriptdir $+ Bitmaps\pbak.bmp
+  drawpic @Spacefighter %x %y $qt($scriptdir $+ Bitmaps\pbak.bmp)
   if (%x <= 680) { inc %x 10 }
   goto loop
   :end
@@ -202,7 +202,7 @@ alias spf.list.screen {
     .halt 
   }  
   if (%y >= 610) { .halt }
-  drawpic @Spacefighter %x %y SpaceFighter\Bitmaps\pbak.bmp
+  drawpic @Spacefighter %x %y $qt($scriptdir $+ Bitmaps\pbak.bmp)
   if (%x <= 680) { inc %x 10 }
   goto loop
 }
@@ -383,7 +383,7 @@ alias -l spf.menugraph {
 }
 alias -l spf.menudraw { drawscroll @Spacefighter 0 30 0 290 600 150 | drawtext -rb @Spacefighter 16777215 1 Veranda 12 10 320 $1- }
 alias -l spf.scheck { 
-  if (!%spf.max.s) || (!$exists(spacefighter\spf.set)) { Spf.speedtest | .halt }
+  ;if (!%spf.max.s) || (!$exists(spacefighter\spf.set)) { Spf.speedtest | .halt }
 }
 alias -l spf.error { if ($dialog(spf.error)) { %spf.error = $1- | dialog -a spf.error | .halt } | %spf.error = $1- | dialog -omd spf.error spf.error | dialog -a spf.error }
 dialog spf.error {
@@ -1942,7 +1942,7 @@ alias -l spf.mapmaker {
   spf.window
   if (!$window(@Spf.Cache)) { window -Chpf +d @Spf.Cache 0 0 680 510 }
   titlebar @SpaceFighter - MapMaker - Unsaved
-  .remove spacefighter\maps\spf.tmp
+  .remove $qt($scriptdir $+ maps\spf.tmp)
   drawrect -rf @Spacefighter 0 1 -1 -1 680 610
   drawrect -f @Spf.cache 0 1 -1 -1 680 610
   drawrect -rf @Spacefighter 0 1 -1 -1 680 610
@@ -1973,12 +1973,12 @@ alias -l spf.mm.draw {
     if (%spf.map.1 == erase) { 
       var %spf.map.erase.1 = 1, %spf.map.erase.x = $mouse.x, %spf.map.erase.y = $mouse.y
       :loop 
-      if (b isin $gettok($read(spacefighter\maps\spf.tmp,%spf.map.erase.1),1,44)) || (s isin $gettok($read(spacefighter\maps\spf.tmp,%spf.map.erase.1),1,44)) {
+      if (b isin $gettok($read($qt($scriptdir $+ maps\spf.tmp),%spf.map.erase.1),1,44)) || (s isin $gettok($read($qt($scriptdir $+ maps\spf.tmp),%spf.map.erase.1),1,44)) {
 
-        if ($inrect(%spf.map.erase.x,%spf.map.erase.y,$gettok($read(spacefighter\maps\spf.tmp,%spf.map.erase.1),2,44),$gettok($read(spacefighter\maps\spf.tmp,%spf.map.erase.1),3,44),15,15)) {
-          drawrect -rf @Spacefighter 0 1 $calc(15 * $int($calc($gettok($read(spacefighter\maps\spf.tmp,%spf.map.erase.1),2,44) / 15))) $calc(15 * $int($calc($gettok($read(spacefighter\maps\spf.tmp,%spf.map.erase.1),3,44) / 15))) $gettok($gettok($read(spacefighter\maps\spf.tmp,%spf.map.erase.1),4,44),3,32) $gettok($gettok($read(spacefighter\maps\spf.tmp,%spf.map.erase.1),4,44),4,32)
-          drawrect -f @Spf.cache 0 1 $calc(15 * $int($calc($mouse.x / 15))) $calc(15 * $int($calc($mouse.y / 15))) $gettok($gettok($read(spacefighter\maps\spf.tmp,%spf.map.erase.1),4,44),3,32) $gettok($gettok($read(spacefighter\maps\spf.tmp,%spf.map.erase.1),4,44),4,32)
-          write -d $+ [ %spf.map.erase.1 ] spacefighter\maps\spf.tmp
+        if ($inrect(%spf.map.erase.x,%spf.map.erase.y,$gettok($read($qt($scriptdir $+ maps\spf.tmp),%spf.map.erase.1),2,44),$gettok($read($qt($scriptdir $+ maps\spf.tmp),%spf.map.erase.1),3,44),15,15)) {
+          drawrect -rf @$qt($scriptdir $+ Spacefighter 0 1 $cal)c(15 * $int($calc($gettok($read($qt($scriptdir $+ maps\spf.tmp),%spf.map.erase.1),2,44) / 15))) $calc(15 * $int($calc($gettok($read($qt($scriptdir $+ maps\spf.tmp),%spf.map.erase.1),3,44) / 15))) $gettok($gettok($read($qt($scriptdir $+ maps\spf.tmp),%spf.map.erase.1),4,44),3,32) $gettok($gettok($read($qt($scriptdir $+ maps\spf.tmp),%spf.map.erase.1),4,44),4,32)
+          drawrect -f @Spf.cache 0 1 $calc(15 * $int($calc($mouse.x / 15))) $calc(15 * $int($calc($mouse.y / 15))) $gettok($gettok($read($qt($scriptdir $+ maps\spf.tmp),%spf.map.erase.1),4,44),3,32) $gettok($gettok($read($qt($scriptdir $+ maps\spf.tmp),%spf.map.erase.1),4,44),4,32)
+          write -d $+ [ %spf.map.erase.1 ] $qt($scriptdir $+ maps\spf.tmp)
           .halt
         } 
       }
@@ -2105,14 +2105,14 @@ on *:DIALOG:spf.mapmaker1:*:*: {
   if ($devent == sclick) {
     if ($did == 3) {
       if ($remove($did(spf.mapmaker1,5).text,\,$chr(47),:,$chr(42),?,",<,>,$chr(124),$chr($32),$chr(44)) == $null) { spf.error Dont enter blank or filenames including... \ / : * ? " < > $chr(124) , and space | dialog -c spf.mapmaker1 | .halt }
-      if ($gettok($read(spacefighter\maps\spf.tmp,1),1,44) == tag) { write -l1 spacefighter\maps\spf.tmp tag $+ , $+ SpaceFighter $+ , $+ $spf.ver(1) $+ , $+ $spf.ver(2) | goto next0 }
-      write -l1 spacefighter\maps\spf.tmp tag $+ , $+ SpaceFighter $+ , $+ $spf.ver(1) $+ , $+ $spf.ver(2)
+      if ($gettok($read($qt($scriptdir $+ maps\spf.tmp),1),1,44) == tag) { write -l1 spacefighter\maps\spf.tmp tag $+ , $+ SpaceFighter $+ , $+ $spf.ver(1) $+ , $+ $spf.ver(2) | goto next0 }
+      write -l1 $qt($scriptdir $+ maps\spf.tmp) tag $+ , $+ SpaceFighter $+ , $+ $spf.ver(1) $+ , $+ $spf.ver(2)
       :next0
-      if ($gettok($read(spacefighter\maps\spf.tmp,1),1,44) == t) { write -l2 spacefighter\maps\spf.tmp t $+ , $+ $remove($did(spf.mapmaker1,5).text,\,/,:,*,?,",<,>,|,$chr($32),$chr(44)) | goto next }
-      write -l2 spacefighter\maps\spf.tmp t $+ , $+ [ $remove($did(spf.mapmaker1,5).text,\,$chr(47),:,$chr(42),?,",<,>,$chr(124),$chr($32),$chr(44)) ]
+      if ($gettok($read(spacefighter\maps\spf.tmp,1),1,44) == t) { write -l2 $qt($scriptdir $+ maps\spf.tmp) t $+ , $+ $remove($did(spf.mapmaker1,5).text,\,/,:,*,?,",<,>,|,$chr($32),$chr(44)) | goto next }
+      write -l2 $qt($scriptdir $+ maps\spf.tmp) t $+ , $+ [ $remove($did(spf.mapmaker1,5).text,\,$chr(47),:,$chr(42),?,",<,>,$chr(124),$chr($32),$chr(44)) ]
       :next
-      if ($gettok($read(spacefighter\maps\spf.tmp,1),1,44) == c) { write -l3 spacefighter\maps\spf.tmp t $+ , $+ $did(spf.mapmaker1,7).text | goto next2 }
-      write -l3 spacefighter\maps\spf.tmp c $+ , $+ [ $remove($did(spf.mapmaker1,7).text,$chr(44)) ]
+      if ($gettok($read($qt($scriptdir $+ maps\spf.tmp),1),1,44) == c) { write -l3 $qt($scriptdir $+ maps\spf.tmp) t $+ , $+ $did(spf.mapmaker1,7).text | goto next2 }
+      write -l3 $qt($scriptdir $+ maps\spf.tmp) c $+ , $+ [ $remove($did(spf.mapmaker1,7).text,$chr(44)) ]
       :next2
       %spf.mm.title = set
       dialog -c spf.mapmaker1
@@ -2123,12 +2123,12 @@ menu @Spacefighter {
   dclick: if (%spf.mapmaker) { echo Mouse X,Y = $mouse.x $+ , $+ $mouse.y }
   sclick: if (%spf.mapmaker) { spf.mm.draw }
   mouse: if (%spf.mapmaker) && ($mouse.key & 1) spf.mm.draw
-  $iif(%spf.mapmaker,&Brick):{ %spf.map.1 = b | %spf.map.3 = SpaceFighter\bitmaps\spfbrick.bmp | %spf.map.2 = 0 0 15 16 }
-  $iif(%spf.mapmaker,&Safe Zone):{ %spf.map.1 = s | %spf.map.3 = SpaceFighter\bitmaps\spfbrick.bmp | %spf.map.2 = 0 16 15 16 }
+  $iif(%spf.mapmaker,&Brick):{ %spf.map.1 = b | %spf.map.3 = $qt($scriptdir $+ bitmaps\spfbrick.bmp) | %spf.map.2 = 0 0 15 16 }
+  $iif(%spf.mapmaker,&Safe Zone):{ %spf.map.1 = s | %spf.map.3 = $qt($scriptdir $+ bitmaps\spfbrick.bmp) | %spf.map.2 = 0 16 15 16 }
   $iif(%spf.mapmaker,-)
   $iif(%spf.mapmaker,&Undo [Z Key]):{ spf.mm.draw undo }
   $iif(%spf.mapmaker,&Eraser):{ %spf.map.1 = erase }
-  $iif(%spf.mapmaker,&Edit in Notepad):{ run notepad.exe spacefighter\maps\spf.tmp  }
+  $iif(%spf.mapmaker,&Edit in Notepad):{ run notepad.exe $qt($scriptdir $+ maps\spf.tmp)  }
   $iif(%spf.mapmaker,-)
   $iif(%spf.mapmaker && !%spf.map.sp1,Player 1 Start Location White): { %spf.map.1 = sp5 }
   $iif(%spf.mapmaker && !%spf.map.sp2,Player 2 Start Location Red): { %spf.map.1 = sp2 }
@@ -2152,13 +2152,13 @@ alias -l spf.mm.save {
   if (%spf.map.sp2 != set) { spf.error You need to set a start location for every user before saving. | .halt }
   if (%spf.map.sp3 != set) { spf.error You need to set a start location for every user before saving. | .halt }
   if (%spf.map.sp4 != set) { spf.error You need to set a start location for every user before saving. | .halt }
-  .copy -o spacefighter\maps\spf.tmp spacefighter\maps\ $+ $remove($gettok($read(spacefighter\maps\spf.tmp,2),2,44),$chr(32)) $+ .spf
-  titlebar @SpaceFighter - MapMaker - Saved As - $gettok($read(spacefighter\maps\spf.tmp,2),2,44) $+ .spf
+  .copy -o spacefighter\maps\spf.tmp spacefighter\maps\ $+ $remove($gettok($read($qt($scriptdir $+ maps\spf.tmp),2),2,44),$chr(32)) $+ .spf
+  titlebar @SpaceFighter - MapMaker - Saved As - $gettok($read($qt($scriptdir $+ maps\spf.tmp),2),2,44) $+ .spf
 
 }
 alias -l spf.mm.load {
   unset %spf.map.sp*
-  var %spf.map.load = $file="Select A Map To Open" [ spacefighter\maps\ $+ *.spf ]
+  var %spf.map.load = $file="Select A Map To Open" [ $qt($scriptdir $+ maps\ $+ *.spf) ]
   if ($gettok($read(%spf.map.load,1),1,44) != tag) && ($gettok($read(%spf.map.load,1),2,44) != SpaceFighter) { spf.error This file is either corrupt or is not a spacefighter map | .halt }
   drawrect -f @Spf.cache 0 1 -1 -1 680 610
   drawrect -rf @Spacefighter 0 1 -1 -1 680 610
@@ -2176,7 +2176,7 @@ alias -l spf.mm.load {
   drawline @Spacefighter 14 1 %spf.map.x %spf.map.y %spf.map.x2 %spf.map.y2
   if (%spf.map.x < 675) { inc %spf.map.x 15 | inc %spf.map.x2 15 | goto loop2 }
   var %abrick.1 = 1
-  .copy -o $shortfn(%spf.map.load) spacefighter\maps\spf.tmp  
+  .copy -o $shortfn(%spf.map.load) $qt($scriptdir $+ maps\spf.tmp)
   :brickit
   if (%spf.map.loop.1 != on) {
     if ($gettok($read(spacefighter\maps\spf.tmp,%abrick.1),1,44) == s) { 
@@ -2325,7 +2325,7 @@ on *:SOCKREAD:spf.dl:{
     did -o spf.update 3 1 Error Could Not Download
     sockclose DL | unset %spf.http* | .halt 
   }
-  %spf.http.file = " $+ SpaceFighter\Updates\ $+ %spf.http.get $+ " 
+  %spf.http.file = " $+ Updates\ $+ %spf.http.get $+ "
   :getdata
   if ($sock($sockname).mark == head) { sockread %spf.http.read }
   else { sockread &DL }

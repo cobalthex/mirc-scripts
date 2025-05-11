@@ -1,0 +1,28 @@
+########################################
+# Config file for PE Workshop 1.0.0
+# done by visionz (g_baril@sympatico.ca)
+#
+# you have to re-launch PE Workshop to
+# use the modifications
+#
+# lines starting with a # are comments
+#
+# IMPORTANT
+########################################
+# All paths are relative to $scriptdir
+#
+########################################
+
+# yes/no, backup file when saving
+# backup file will be created in \project\
+backup=		yes
+
+# these file contains lots of information. Delete them
+# and the addon is fucked up..
+address=	\data\addresses
+consts=		\data\const
+
+# Grid listview
+# you must have at least internet explorer 3 to use this option
+# comment this line to disabled it
+showgrid=	grid

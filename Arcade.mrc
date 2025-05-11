@@ -178,7 +178,7 @@ menu * {
 ;;;;;
 on *:LOAD: {
   ;Arcade
-  The Arcade was sucsessfully loaded!
+  echo 2 -m The Arcade was sucsessfully loaded!
   ;Shoot Em Up
   Arcade.load Shoot_Em_Up
   echo 2 -m Shoot Em Up sucsessfully loaded!

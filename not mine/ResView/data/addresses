@@ -1,0 +1,90 @@
+# headers addresses
+# build by visionz
+#
+# do not modify this file
+
+!section exe
+	[0]
+	0 2 Signature [ascii]:
+	2 2 Extra Bytes
+	4 2 Pages
+	6 2 Reloc items
+	8 2 Header Size
+	10 2 Minimum Allocation
+	12 2 Maximum Allocation
+	14 2 Initial SS
+	16 2 Initial SP
+	18 2 Check Sum
+	20 2 Initial IP
+	22 2 Initial CS
+	24 2 Reloc Table
+	26 2 Overlay
+!end exe
+
+!section coff
+	[$g(coff)]
+	0 4 Signature [ascii]:
+	4 2 Machine
+	6 2 Number of sections [save-nbrsection]:
+	8 4 Time/Date stamp
+	12 4 Pointer to symbol table
+	16 4 Number of symbols
+	20 2 Optional Header Size
+	22 2 Characteristics
+!end coff
+
+!section optional
+	[$g(coff)]
+	24 2 Magic
+	26 1 Linker Major Version Number
+	27 1 Linker Minor Version Number
+	28 4 Size of Code Section
+	32 4 Initialized Data Size
+	36 4 Uninitialized Data Size
+	40 4 Entry Point RVA
+	44 4 Base of Code
+	48 4 Base of Data
+	52 4 Image Base [save-imagebase]:
+	56 4 Section Alignment
+	60 4 File Alignment
+	64 2 OS Major Version
+	66 2 Os Minor Version
+	68 2 User Major Version
+	70 2 User Minor Version
+	72 2 SubSys Major Version
+	74 2 SubSys Minor Version
+	76 4 Reserved
+	80 4 Image Size
+	84 4 Header Size
+	88 4 File Checksum
+	92 2 SubSystem
+	94 2 DLL Flags
+	96 4 Stack Reserved Size
+	100 4 Stack Commit Size
+	104 4 Heap Reserve Size
+	108 4 Heap Commit Size
+	112 4 Loader Flags
+	116 4 Number of Data Directories
+	120 4 Export Table Address
+	124 4 Export Table Size
+	128 4 Import Table Address
+	132 4 Import Table Size
+	136 4 Ressource Table Address
+	140 4 Ressource Table Size
+	144 4 Exception Table Address
+	148 4 Exception Table Size
+	152 4 Security Table Address
+	156 4 Security Table Size
+	160 4 Base Relocation Table Address
+	164 4 Base Relocation Table Size
+	168 4 Debug Data Address
+	172 4 Debug Data Size
+	176 4 Copyright Data Address
+	180 4 Copyright Data Size
+	184 4 Global Ptr
+	188 4 Global Ptr Size
+	192 4 TLS Table Address
+	196 4 TLS Table Size
+	200 4 Load Config Table Address
+	204 4 Load Config Table Size
+!end optional

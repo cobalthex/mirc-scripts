@@ -1,0 +1,65 @@
+Resources Viewer
+g_baril@sympatico.ca
+
+Versions:
+
+July 24th 2003
+#####################################
+Added AVI playback
+Added cursor view
+Added auto-detection of ASCII/Binary resources
+'Open dialog' now remembers last directory
+
+July 23rd 2003
+#####################################
+Fixed a dialog decompilation bug
+Added playback of wave file (in RCDATA)
+
+July 3rd 2003
+#####################################
+Added UPX, cexe and ACProtect detection (they are exe compressor)
+Added hexadecimal view of sections that are not completed
+Fixed a 'section' bug
+
+June 30th 2003
+#####################################
+Added icons view
+Added string tables view
+Now works with MASM32 compiled file
+
+June 29th 2003
+#####################################
+Fixed a "path-with-space" bug :D
+
+June 13th 2003
+#####################################
+Added dialogs view (RC format)
+Fixed some small bugs
+
+June 11th 2003
+#####################################
+Added Bitmap view
+Added Manifest view
+Now works with Borland compiled file
+
+June 7th 2003
+#####################################
+Recoded it (it was getting too messy)
+Now saving resources in .res format
+Added loading window
+
+June 4th 2003
+#####################################
+Fix bug that made output wrong when ID was a string
+Added some info in resources
+Every alias are now local
+
+June 3rd 2003
+#####################################
+Added resources listing
+Removed debugging info
+Fixed a loading error
+
+Mai 25th 2003
+#####################################
+First public release
